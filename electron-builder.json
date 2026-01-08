@@ -1,0 +1,12 @@
+{
+    "appId": "com.gabrielFOP.f1racedata",
+    "files": ["dist-electron", "dist-react"], 
+    "extraResourcers":["dist-electron/preload.cts"],
+    "mac": {
+        "target": "dmg"
+    },
+    "linux": {
+        "target": "AppImage",
+        "category": "Utility"
+    }
+}
