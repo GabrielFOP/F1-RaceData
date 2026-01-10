@@ -1,10 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  async function handleFetch() {
+    try{
+      const mKey = 1261;
+      const year = 2025; 
+      const type = 'Race'; 
+      
+    
+      const data = await window.electron.getSessionData(mKey, year, type);
+      console.log("Received session data", data);
+    } catch (error) {
+      console.error("Error fetching session data", error);
+    }
+  }
+
+  useEffect(() => {
+    handleFetch()
+  }, [])
 
   return (
     <>
