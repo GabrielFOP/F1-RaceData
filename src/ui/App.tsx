@@ -1,53 +1,14 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { MeetingsGrid } from '../components/meetingsGrid';
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  async function handleFetch() {
-    try{
-      const mKey = 1261;
-      const year = 2025; 
-      const type = 'Race'; 
-      
-    
-      const data = await window.electron.getSessionData(mKey, year, type);
-      console.log("Received session data", data);
-    } catch (error) {
-      console.error("Error fetching session data", error);
-    }
-  }
-
-  useEffect(() => {
-    handleFetch()
-  }, [])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <MeetingsGrid year={2026}/>
     </>
   )
 }
-
+  
 export default App

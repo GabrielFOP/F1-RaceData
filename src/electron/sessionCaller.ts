@@ -14,3 +14,15 @@ export async function getSessionData(meeting_key: number, year: number, session_
         .then((data: session[]) => data)
 }   
 
+export async function loadMeetingByYear(year: number): Promise<meeting[]> {
+    const meetingUrl = `https://api.openf1.org/v1/meetings?year=${year}`
+
+    return fetch(meetingUrl)
+        .then(response => {
+            if(!response.ok){
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data: meeting[])=> data);
+}
