@@ -1,8 +1,19 @@
 import { useMeetingData } from '../hooks/useMeetingData';
 import styles from './meetingsGrid.module.css';
+import { useKeyPointsStore } from '../store/useMeetingStore';
+import { useNavigate } from 'react-router-dom';
 
 export function MeetingsGrid({ year }: { year: number }) {
     const { meetings, loading, error } = useMeetingData(year);
+
+    const setMeetingData = useKeyPointsStore((state) => state.setData);
+    const navigate = useNavigate();
+    
+    const handleMeetingLoad = (meeting: any) => {
+        setMeetingData(meeting);
+
+        navigate(`/session/${meeting.meeting_key}`);
+    }
 
     if (loading) {
         return <div className={styles.loaderContainer}>  
@@ -13,11 +24,11 @@ export function MeetingsGrid({ year }: { year: number }) {
     if (error) { 
         return <div>Error loading data {error.message} </div>
     }
-
+    
     return (
         <div className={styles.meetingsGrid}> 
             {meetings.map((meeting) => (
-                <div key={meeting.meeting_key} className={styles.meetingCard}>
+                <div key={meeting.meeting_key} className={styles.meetingCard} onClick={() => handleMeetingLoad(meeting)}>
                     <img src={meeting.circuit_image} alt={meeting.circuit_short_name} className={styles.circuitImage} />
                     <h3>{meeting.meeting_name}</h3>
                     <p>{meeting.circuit_short_name == meeting.location? meeting.location : meeting.circuit_short_name + " - " + meeting.location} <img src={meeting.country_flag} alt={meeting.country_name} className={styles.countryFlag} /> </p>

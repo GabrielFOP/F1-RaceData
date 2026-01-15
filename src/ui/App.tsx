@@ -1,13 +1,17 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { MeetingsGrid } from '../components/meetingsGrid';
+import Home from '../pages/Home'
+import SessionPage from '../pages/SessionPage'
+
 
 function App() {
 
 
   return (
-    <>
-      <MeetingsGrid year={2026}/>
-    </>
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/session/:meetingKey" element={<SessionPage />} />
+    </Routes>
   )
 }
   

@@ -41,9 +41,30 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.meetingCard div{
+    color: white;
+    font-size: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.meetingCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(240, 240, 240, 0.5);
+}
+
+.meetingCard:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translate(100%);
+}
+
+
 
 .countryFlag {
     width: 32px;
