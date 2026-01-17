@@ -3,7 +3,7 @@ import { MeetingsGrid } from '../components/meetingsGrid';
 function Home() {
   return (
     <>
-      <MeetingsGrid year={2026}/>
+      <MeetingsGrid year={2025}/>
     </>
   );
 }

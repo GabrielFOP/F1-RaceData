@@ -52,8 +52,6 @@
     z-index: 2;
 }
 
-
-
 .meetingCard:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(240, 240, 240, 0.5);

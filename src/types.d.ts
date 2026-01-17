@@ -36,13 +36,15 @@ declare global{
     }
 
     type driver = {
-        broadcast_name: string, 
+        broadcast_name: string,
+        full_name: string, 
         country_code: string,
         driver_number: number, 
         full_name: string, 
         name_anacronym: string, 
-        team_color: string, 
+        team_colour: string, 
         team_name: string, 
+        headshot_url: string,
         meeting_key: undefined | number,
         session_key: undefined | number 
     }
@@ -51,6 +53,7 @@ declare global{
         electron: {
             getSessionData: (meeting_key: number, year: number, session_type: string) => Promise<session[]>; 
             loadMeetingByYear: (year: number) => Promise<meeting[]>;
+            loadDriversByMeetingAndSession: (meeting_key: number, session_key: number) => Promise<driver[]>;
         };
     }
 

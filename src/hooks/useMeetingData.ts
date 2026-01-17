@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 
 export function useMeetingData(year: number) {
-    const [meetings, setMeetings] = useState<any[]>([]);
+    const [meetings, setMeetings] = useState<meeting[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | null>(null);
 
